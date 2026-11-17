@@ -23,5 +23,9 @@ namespace SynchronizedStamina
 		[SettingPropertyInteger("Sprinting", 1, 100, "0", Order = 0, RequireRestart = false, HintText = "Multiplier for stamina drain when sprinting. Default is 10.")]
 		[SettingPropertyGroup("Stamina Drain Multipliers", GroupOrder = 1)]
 		public int SprintingStaminaDrainMultiplier { get; set; } = 10;
+
+		[SettingPropertyInteger("Dodging", 1, 100, "0", Order = 1, RequireRestart = false, HintText = "Multiplier for stamina drain when dodging. Default is 10.")]
+		[SettingPropertyGroup("Stamina Drain Multipliers", GroupOrder = 1)]
+		public int DodgingStaminaDrainMultiplier { get; set; } = 10;
 	}
 }

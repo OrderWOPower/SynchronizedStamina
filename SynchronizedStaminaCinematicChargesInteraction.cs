@@ -33,8 +33,7 @@ namespace SynchronizedStamina
 					{
 						codesToReplace.Add(codes[i]);
 					}
-
-					if (codes[i].operand is MethodInfo method && method == AccessTools.Method(typeof(Agent), "GetComponent", generics: new Type[] { typeof(ArtemCoreAgentComponent) }) && codes[i - 1].opcode == OpCodes.Ldfld)
+					else if (codes[i].operand is MethodInfo method && method == AccessTools.Method(typeof(Agent), "GetComponent", generics: new Type[] { typeof(ArtemCoreAgentComponent) }) && codes[i - 1].opcode == OpCodes.Ldfld)
 					{
 						codesToRemove.Add(codes[i - 2]);
 						codesToRemove.Add(codes[i - 1]);
@@ -42,22 +41,11 @@ namespace SynchronizedStamina
 					}
 				}
 
-				if (codesToReplace.Count >= 2)
+				// Skip the first 2 matches for _playerStamina and _aiStamina.
+				foreach (CodeInstruction code in codesToReplace.Skip(2))
 				{
-					// Skip the first 2 matches for _playerStamina and _aiStamina.
-					codesToReplace.RemoveRange(0, 2);
-				}
-
-				if (codesToRemove.Count >= 6)
-				{
-					// Skip the first 6 matches for this.Agent.GetComponent<ArtemCoreAgentComponent>.
-					codesToRemove.RemoveRange(0, 6);
-				}
-
-				foreach (CodeInstruction code in codesToReplace)
-				{
-					codesToInsert.Clear();
 					// Route the stamina in Artem's mods to the stamina in RBM.
+					codesToInsert.Clear();
 					codesToInsert.Add(new CodeInstruction(OpCodes.Ldloc_0));
 
 					if (code.opcode == OpCodes.Ldsfld || code.opcode == OpCodes.Ldfld)
@@ -74,7 +62,8 @@ namespace SynchronizedStamina
 					codes.InsertRange(index + 1, codesToInsert);
 				}
 
-				foreach (CodeInstruction code in codesToRemove)
+				// Skip the first 6 matches for this.Agent.GetComponent<ArtemCoreAgentComponent>.
+				foreach (CodeInstruction code in codesToRemove.Skip(6))
 				{
 					codes.Remove(code);
 				}
