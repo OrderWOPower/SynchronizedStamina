@@ -19,6 +19,14 @@ namespace SynchronizedStamina
 			}
 		}
 
+		public override void OnBeforeMissionBehaviorInitialize(Mission mission)
+		{
+			if (RBMConfig.RBMConfig.rbmStanceEnabled && RBMConfig.RBMConfig.staminaEnabled)
+			{
+				mission.AddMissionBehavior(new SynchronizedStaminaMissionBehavior());
+			}
+		}
+
 		public override void OnGameEnd(Game game) => _harmony.UnpatchAll("mod.bannerlord.synchronizedstamina");
 	}
 }

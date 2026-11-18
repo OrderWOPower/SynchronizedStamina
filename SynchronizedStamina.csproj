@@ -71,9 +71,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SynchronizedStaminaCinematicChargesInteraction.cs" />
-    <Compile Include="SynchronizedStaminaCinematicCombatInteraction.cs" />
-    <Compile Include="SynchronizedStaminaRbmInteraction.cs" />
+    <Compile Include="SynchronizedStaminaAgentComponent.cs" />
+    <Compile Include="InteractionWithOtherMods\SynchronizedStaminaCinematicChargesInteraction.cs" />
+    <Compile Include="InteractionWithOtherMods\SynchronizedStaminaCinematicCombatInteraction.cs" />
+    <Compile Include="SynchronizedStaminaMissionBehavior.cs" />
+    <Compile Include="InteractionWithOtherMods\SynchronizedStaminaRbmInteraction.cs" />
     <Compile Include="SynchronizedStaminaSettings.cs" />
     <Compile Include="SynchronizedStaminaSubModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

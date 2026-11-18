@@ -3,7 +3,7 @@ using System.Reflection;
 using HarmonyLib;
 using RBMStance;
 
-namespace SynchronizedStamina
+namespace SynchronizedStamina.InteractionWithOtherMods
 {
 	[HarmonyPatch]
 	public class SynchronizedStaminaRbmInteraction
