@@ -27,7 +27,7 @@ namespace SynchronizedStamina
 			{
 				if (ArtemCore.ArtemCore._playerStamina < _currentValue)
 				{
-					_stance.stamina = ArtemCore.ArtemCore._playerStamina;
+					_stance.ReduceStamina(_currentValue - ArtemCore.ArtemCore._playerStamina);
 				}
 
 				ArtemCore.ArtemCore._playerStamina = _stance.stamina;
@@ -37,7 +37,7 @@ namespace SynchronizedStamina
 			{
 				if (_artemCoreAgentComponent._aiStamina < _currentValue)
 				{
-					_stance.stamina = _artemCoreAgentComponent._aiStamina;
+					_stance.ReduceStamina(_currentValue - _artemCoreAgentComponent._aiStamina);
 				}
 
 				_artemCoreAgentComponent._aiStamina = _stance.stamina;

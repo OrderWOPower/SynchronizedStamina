@@ -50,7 +50,7 @@ namespace SynchronizedStamina.InteractionWithOtherMods
 				yield return AccessTools.Method(typeof(SprintAgentComponent), "RegenStamina");
 			}
 
-			// Skip Artem's stamina regeneration.
+			// Disable Artem's stamina regeneration.
 			private static bool Prefix() => false;
 		}
 

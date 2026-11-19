@@ -41,6 +41,6 @@ namespace SynchronizedStamina.InteractionWithOtherMods
 		}
 
 		// Multiply the stamina drain in Artem's mods to match the same scale as RBM.
-		private static float GetStaminaDrain(float oldValue) => oldValue * SynchronizedStaminaSettings.Instance.DodgingStaminaDrainMultiplier;
+		private static float GetStaminaDrain(float initialValue) => initialValue * SynchronizedStaminaSettings.Instance.DodgingStaminaDrainMultiplier;
 	}
 }
